@@ -1,5 +1,11 @@
 <?php 
-  include('utilities/navbar.php')
+  
+  include('config/db.php');
+  if(!$_SESSION['login']){
+    header("location: index.php");
+    die;
+ };
+ include('utilities/navbar.php');
 ?>
       <!-- Sidebar Navigation end-->
       <div class="page-content">

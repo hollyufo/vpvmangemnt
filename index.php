@@ -1,3 +1,6 @@
+<?php 
+  include('controllers/login.php')
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -37,7 +40,7 @@
                   <div class="logo">
                     <h1>Dashboard</h1>
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                  <p>VPV managemnt app.</p>
                 </div>
               </div>
             </div>
@@ -45,15 +48,21 @@
             <div class="col-lg-6 bg-white">
               <div class="form d-flex align-items-center">
                 <div class="content">
-                  <form method="get" class="form-validate">
+                  <form method="POST" action="" class="form-validate">
+                    <?php echo $accountNotExistErr; ?>
+                    <?php echo $emailPwdErr; ?>
+                    <?php echo $verificationRequiredErr; ?>
+                    <?php echo $email_empty_err; ?>
+                    <?php echo $pass_empty_err; ?>
                     <div class="form-group">
-                      <input id="login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material">
-                      <label for="login-username" class="label-material">User Name</label>
+                      <input id="email_signin" type="text" name="email_signin" required data-msg="Please enter your email" class="input-material">
+                      <label for="email_signin" class="label-material">User Name</label>
                     </div>
                     <div class="form-group">
-                      <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
-                      <label for="login-password" class="label-material">Password</label>
-                    </div><a id="login" href="index.html" class="btn btn-primary">Login</a>
+                      <input id="password_signin" type="password" name="password_signin" required data-msg="Please enter your password" class="input-material">
+                      <label for="password_signin" class="label-material">Password</label>
+                    </div>
+                    <button type="submit" name="login" class="btn btn-primary">Login</button>
                     <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                   </form><a href="#" class="forgot-pass">Forgot Password?</a><br><small>Do not have an account? </small><a href="register.html" class="signup">Signup</a>
                 </div>
@@ -63,7 +72,7 @@
         </div>
       </div>
       <div class="copyrights text-center">
-         <p>2018 &copy; Your company. Download From <a target="_blank" href="https://templateshub.net">Templates Hub</a>.</p>
+         <p>2022 &copy; vpv <a target="_blank" href="https://virtualprovision.ma">VPV</a>.</p>
       </div>
     </div>
     <!-- JavaScript files-->

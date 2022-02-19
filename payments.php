@@ -96,12 +96,8 @@
 
 
     <!--modal -->
-    <div class="col-lg-4">
-        <div class="block">
-          <div class="title"><strong>Modal Form</strong></div>
-          <div class="block-body text-center">
-            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Form in simple modal </button>
-            <!-- Modal-->
+  
+    <!-- Modal-->
             <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
               <div role="document" class="modal-dialog">
                 <div class="modal-content">
@@ -144,9 +140,11 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+          
       <?php 
-  include('utilities/footer.php')
+
+
+
+
+include('utilities/footer.php')
 ?>
