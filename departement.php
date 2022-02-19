@@ -22,8 +22,8 @@
                       <thead>
                         <tr>
                           <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
+                          <th>name</th>
+                          <th>total</th>
                           <th>Email</th>
                           <th>Phone</th>
                           <th>Departement</th>

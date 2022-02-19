@@ -12,8 +12,8 @@ if(isset($_POST['save'])){
         '$Email','$Phone','$depart')";
         
     if(mysqli_query($connection, $sql)){
+        header('location: employee.php');   
         $useradded = "<div class='alert alert-success email_alert'> user added.</div>";
-        header('location: employee.php');
     } else{
         echo "ERROR: Hush! Sorry $sql. " 
             . mysqli_error($connection);
