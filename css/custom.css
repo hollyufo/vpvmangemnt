@@ -1,0 +1,12 @@
+/* your styles go here */
+.myelements{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.text1{
+    color: #979a9f;
+    margin-bottom: 20px;
+    padding: 9px;
+    width: 100%;
+}
