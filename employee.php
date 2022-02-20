@@ -25,7 +25,7 @@
               <div class="col-lg-12">
                 <div class="block margin-bottom-sm">
                   <?php echo $useradded; ?>
-                  <div class="title"><strong>User Table</strong></div>
+                  <div class="title"><strong>Employee Table</strong></div>
                   <div class="table-responsive"> 
                     <table class="table">
                       <thead>
