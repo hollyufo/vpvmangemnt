@@ -15,7 +15,7 @@
           <div class="container-fluid">
               <div class="myelements">
                 <h2 class="h5 no-margin-bottom">Dashboard</h2>
-                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary mt-4">Form in simple modal </button>    
+                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary mt-4">ADD Employee</button>    
               </div>
             </div>
         </div>
@@ -24,7 +24,8 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="block margin-bottom-sm">
-                  <?php echo $useradded; ?>
+                  <?php 
+                  ?>
                   <div class="title"><strong>Employee Table</strong></div>
                   <div class="table-responsive"> 
                     <table class="table">
@@ -42,14 +43,14 @@
                       <tbody>
                       <?php
                                 // show data
-                                $sql = "SELECT * FROM employee inner join dep on employee.depid = dep.depid";
+                                $sql = "SELECT * FROM employee INNER join dep on employee.depid = dep.depid INNER JOIN payroll on payroll.empolyeeid = payroll.empolyeeid";
                                 $result1 = mysqli_query($connection, $sql);
                                 
                                 if (mysqli_num_rows($result1) > 0) {
                                 // output data of each row
                                 while($employee = mysqli_fetch_assoc($result1)) {
                                     echo '<tr>';
-                                    echo '<td class="mytd">'.$employee['employeeid'].'</td>';
+                                    echo '<td class="mytd">'.$employee['payrollid'].'</td>';
                                     echo '<td class="mytd">'.$employee['lastname'].'</td>';
                                     echo '<td class="mytd">'.$employee['firstname'].'</td>';
                                     echo '<td class="mytd">'.$employee['email'].'</td>';

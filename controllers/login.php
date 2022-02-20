@@ -49,6 +49,7 @@
                     $pass_word     = $row['password'];
                     $token         = $row['token'];
                     $is_active     = $row['is_active'];
+                    $_SESSION['message'] = '';
                 }
 
                 // Verify password
