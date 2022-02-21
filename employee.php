@@ -43,14 +43,14 @@
                       <tbody>
                       <?php
                                 // show data
-                                $sql = "SELECT * FROM employee INNER join dep on employee.depid = dep.depid INNER JOIN payroll on payroll.empolyeeid = payroll.empolyeeid";
+                                $sql = "SELECT * FROM employee INNER join dep on employee.depid = dep.depid";
                                 $result1 = mysqli_query($connection, $sql);
                                 
                                 if (mysqli_num_rows($result1) > 0) {
                                 // output data of each row
                                 while($employee = mysqli_fetch_assoc($result1)) {
                                     echo '<tr>';
-                                    echo '<td class="mytd">'.$employee['payrollid'].'</td>';
+                                    echo '<td class="mytd">'.$employee['employeeid'].'</td>';
                                     echo '<td class="mytd">'.$employee['lastname'].'</td>';
                                     echo '<td class="mytd">'.$employee['firstname'].'</td>';
                                     echo '<td class="mytd">'.$employee['email'].'</td>';

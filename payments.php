@@ -34,13 +34,15 @@
                           <th>Amount</th>
                           <th>Date</th>
                           <th>Reason</th>
+                          <th>Employee</th>
+                          <th>Departement</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                       <?php
                                 // show data
-                                $sql = "SELECT * FROM payroll";
+                                $sqlp = "SELECT * FROM employee INNER join dep on employee.depid = dep.depid INNER JOIN payroll on payroll.empolyeeid = employee.employeeid";
                                 $result1p = mysqli_query($connection, $sqlp);
                                 
                                 if (mysqli_num_rows($result1p) > 0) {

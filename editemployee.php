@@ -14,8 +14,7 @@
         <div class="page-header">
           <div class="container-fluid">
               <div class="myelements">
-                <h2 class="h5 no-margin-bottom">Dashboard</h2>
-                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary mt-4">Form in simple modal </button>    
+                <h2 class="h5 no-margin-bottom">Dashboard</h2>  
               </div>
             </div>
         </div>
@@ -55,12 +54,12 @@
                                   while($departement = mysqli_fetch_assoc($result2)) {
                                   echo '<option value="'.$departement['depid'].'">'.$departement['depame'].'</option>';
                                   }
-                                  mysqli_close($connection);
+                                  //mysqli_close($connection);
                                 } 
                                 ?>
                                 </select>
                               <div class="form-group">       
-                                  <input type="submit" name="save" value="save" class="btn btn-primary">
+                                  <input type="submit" name="update" value="update" class="btn btn-primary">
                               </div>
                           </form>
           </div>
@@ -80,7 +79,7 @@
       ?>
       <!-- saving edit code -->
       <?php
-                    if(isset($_POST['save'])){
+                    if(isset($_POST['update'])){
 
 
                         $firstname =  $_POST['firstname'];
@@ -88,7 +87,7 @@
                         $Email = $_POST['Email'];
                         $Phone =  $_POST['phone'];
                         $deb = $_POST['deb'];
-                        mysqli_query($connection, "UPDATE employee SET lastname='$lastname', firstname='$firstname', email='$Email', deb='$deb' WHERE employeeid=$employee_id");
+                        mysqli_query($connection, "UPDATE employee SET lastname='$lastname', firstname='$firstname', email='$Email', depid='$deb' WHERE employeeid=$employee_id");
                         echo "<script>window.location.href = './employee.php';</script>";
                         
 
