@@ -150,7 +150,7 @@
                         <option value="other">Other</option>
                         </select>
                         <div class="form-group">       
-                            <input name=payment type="submit" value="payment" class="btn btn-primary">
+                            <button name=payment type="submit" value="payment" class="btn btn-primary">Save</button>
                         </div>
                     </form>
                   </div>
