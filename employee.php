@@ -43,7 +43,7 @@
                       <tbody>
                       <?php
                                 // show data
-                                $sql = "SELECT * FROM employee INNER join dep on employee.depid = dep.depid";
+                                $sql = "SELECT * FROM employee INNER join dep on employee.depid = dep.depid ORDER BY employeeid DESC";
                                 $result1 = mysqli_query($connection, $sql);
                                 
                                 if (mysqli_num_rows($result1) > 0) {

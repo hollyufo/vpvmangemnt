@@ -11,7 +11,7 @@
       <div class="page-content">
         <div class="page-header">
           <div class="container-fluid">
-            <h2 class="h5 no-margin-bottom">Dashboard</h2>
+            <h2 class="h5 no-margin-bottom">VPV Dashboard</h2>
           </div>
         </div>
         <section class="no-padding-top no-padding-bottom">
@@ -21,9 +21,14 @@
                 <div class="statistic-block block">
                   <div class="progress-details d-flex align-items-end justify-content-between">
                     <div class="title">
-                      <div class="icon"><i class="icon-user-1"></i></div><strong>Users</strong>
+                      <div class="icon"><i class="icon-user-1"></i></div><strong>Employee</strong>
                     </div>
-                    <div class="number dashtext-1">27</div>
+                    <?php
+                      $sqlz = "SELECT COUNT(employeeid) AS emp_count FROM employee";
+                      $resultz = mysqli_query($connection, $sqlz);
+                      $user = mysqli_fetch_assoc($resultz);
+                    ?>
+                    <div class="number dashtext-1"><?php echo $user['emp_count']?></div>
                   </div>
                 </div>
               </div>
@@ -33,7 +38,12 @@
                     <div class="title">
                       <div class="icon"><i class="icon-contract"></i></div><strong>departement</strong>
                     </div>
-                    <div class="number dashtext-2">375</div>
+                    <?php
+                      $sqlq = "SELECT COUNT(depid) AS dep_count FROM dep";
+                      $resultq = mysqli_query($connection, $sqlq);
+                      $dep = mysqli_fetch_assoc($resultq);
+                    ?>
+                    <div class="number dashtext-2"><?php echo $dep['dep_count']?></div>
                   </div>
 
                 </div>
@@ -44,7 +54,12 @@
                     <div class="title">
                       <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>total spent</strong>
                     </div>
-                    <div class="number dashtext-3">140</div>
+                    <?php
+                      $sqle = "SELECT SUM(payrollamount) AS pay_count FROM payroll";
+                      $resulte = mysqli_query($connection, $sqle);
+                      $pay = mysqli_fetch_assoc($resulte);
+                    ?>
+                    <div class="number dashtext-3"><?php echo $pay['pay_count']?></div>
                   </div>
 
                 </div>
@@ -55,7 +70,12 @@
                     <div class="title">
                       <div class="icon"><i class="icon-writing-whiteboard"></i></div><strong>employee</strong>
                     </div>
-                    <div class="number dashtext-4">41</div>
+                    <?php
+                      $sqld = "SELECT COUNT(id) AS user_count FROM users";
+                      $resultd = mysqli_query($connection, $sqld);
+                      $use = mysqli_fetch_assoc($resultd);
+                    ?>
+                    <div class="number dashtext-4"><?php echo $use['user_count']?></div>
                   </div>
                 </div>
               </div>
@@ -67,36 +87,41 @@
             <div class="row">
               <div class="col-lg-6">
                 <div class="block margin-bottom-sm">
-                  <div class="title"><strong>Basic Table</strong></div>
+                  <div class="title"><strong>Payment</strong></div>
                   <div class="table-responsive"> 
                     <table class="table">
                       <thead>
                         <tr>
                           <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
+                          <th>Amount</th>
+                          <th>Date</th>
+                          <th>Employee</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
+                      <?php
+                                // show data
+                                $sqlp = "SELECT * FROM employee INNER join dep on employee.depid = dep.depid INNER JOIN payroll on payroll.empolyeeid = employee.employeeid ORDER BY payrollid DESC LIMIT 10";
+                                $result1p = mysqli_query($connection, $sqlp);
+                                
+                                if (mysqli_num_rows($result1p) > 0) {
+                                // output data of each row
+                                while($payroll = mysqli_fetch_assoc($result1p)) {
+                                  ?>
+                                  
+                                    <tr>
+                                    <td><?=$payroll['payrollid']?></td>
+                                    <td><?=$payroll['payrollamount']?></td>
+                                    <td><?=$payroll['payrolldate']?></td>
+                                    <td><?=$payroll['firstname'].' '.$payroll['lastname']?></td>
+                                    <?php
+                                    echo '</tr>';
+                                }
+                                }
+                                else {
+                                    echo '<div class="alert alert-warning" role="alert">Sorry no data available</div>';
+                                }
+                                ?>
                       </tbody>
                     </table>
                   </div>
@@ -104,36 +129,43 @@
               </div>
               <div class="col-lg-6">
                 <div class="block margin-bottom-sm">
-                  <div class="title"><strong>Basic Table</strong></div>
+                  <div class="title"><strong>Departement</strong></div>
                   <div class="table-responsive"> 
                     <table class="table">
                       <thead>
                         <tr>
                           <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
+                          <th>Name</th>
+                          <th>Employee</th>
+                          <th>Budget</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
+                      <?php
+                                // show data for tot spent
+                                global $departement;
+                                // show data for departement name
+                                $sql = "SELECT dep.depid, dep.depame,COUNT(employee.employeeid) AS emp_count, SUM(payrollamount) as sum FROM employee INNER join dep on employee.depid = dep.depid INNER JOIN payroll on payroll.empolyeeid = employee.employeeid group by dep.depame LIMIT 10;";
+                                $result1 = mysqli_query($connection, $sql);
+                                
+                                if (mysqli_num_rows($result1) > 0) {
+                                // output data of each row
+                                while($departement = mysqli_fetch_assoc($result1)) {
+                                    echo '<tr>';
+                                    echo '<td>'.$departement['depid'].'</td>';
+                                    echo '<td>'.$departement['depame'].'</td>';
+                                    echo '<td>'.$departement['emp_count'].'</td>';
+                                    echo '<td>'.$departement['sum'].'</td>';
+                                    echo '</tr>';
+                                }
+                                }
+                                else {
+                                    echo '<div class="alert alert-warning" role="alert">Sorry no data available</div>';
+                                }
+                                
+                                
+
+                                ?>
                       </tbody>
                     </table>
                   </div>

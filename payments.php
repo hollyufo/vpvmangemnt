@@ -44,7 +44,7 @@
                       <tbody>
                       <?php
                                 // show data
-                                $sqlp = "SELECT * FROM employee INNER join dep on employee.depid = dep.depid INNER JOIN payroll on payroll.empolyeeid = employee.employeeid";
+                                $sqlp = "SELECT * FROM employee INNER join dep on employee.depid = dep.depid INNER JOIN payroll on payroll.empolyeeid = employee.employeeid ORDER BY payrollid DESC";
                                 $result1p = mysqli_query($connection, $sqlp);
                                 
                                 if (mysqli_num_rows($result1p) > 0) {
