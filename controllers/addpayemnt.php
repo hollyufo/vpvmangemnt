@@ -8,10 +8,11 @@ if(isset($_POST['payment'])){
     $methode = $_POST['method'];
     $refrence = $_POST['Refrence'];
     $user =  $_POST['user'];
+    $category = $_POST['category'];
         
     // adding it to the data base
     $sql = "INSERT INTO payroll VALUES (null,'$amount','$date', 
-        '$reason','$refrence','$methode','$user')";
+        '$reason','$refrence','$methode','$user', '$category')";
         
     if(mysqli_query($connection, $sql)){
         header('location: payments.php');   

@@ -5,6 +5,7 @@
       header("location: index.php");
       die;
    };
+   include('./controllers/time.php');
    global $useradded;
    include('utilities/navbar.php');
    include('controllers/adduser.php');
@@ -30,20 +31,8 @@
           <p>updated user information.</p>
                           <form method="POST">
                               <div class="form-group">
-                                  <label>Last name</label>
-                                  <input name="lastname" type="text" placeholder="first name" class="form-control" value="<?php echo $row['lastname']; ?>"> 
-                              </div>
-                              <div class="form-group">
                                   <label>first name</label>
                                   <input name="firstname" type="text" placeholder="last name" class="form-control" value="<?php echo $row['firstname']; ?>">
-                              </div>
-                              <div class="form-group">
-                                  <label>Email</label>
-                                  <input name="Email" type="email" placeholder="first name" class="form-control" value="<?php echo $row['email']; ?>">
-                              </div>
-                              <div class="form-group">       
-                                  <label>Phone number</label>
-                                  <input name="phone" type="tel" placeholder="phone number" class="form-control" value="<?php echo $row['phonenumber']; ?>">
                               </div>
                               <select name="deb" class="form-select bg-dark text1 aria-label=">
                               <?php
@@ -83,11 +72,8 @@
 
 
                         $firstname =  $_POST['firstname'];
-                        $lastname = $_POST['lastname'];
-                        $Email = $_POST['Email'];
-                        $Phone =  $_POST['phone'];
                         $deb = $_POST['deb'];
-                        mysqli_query($connection, "UPDATE employee SET lastname='$lastname', firstname='$firstname', email='$Email', depid='$deb' WHERE employeeid=$employee_id");
+                        mysqli_query($connection, "UPDATE employee SET firstname='$firstname', depid='$deb' WHERE employeeid=$employee_id");
                         echo "<script>window.location.href = './employee.php';</script>";
                         
 

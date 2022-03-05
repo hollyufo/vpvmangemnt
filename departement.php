@@ -2,6 +2,7 @@
   include('config/db.php');
   include('controllers/adddepartement.php');
   include('utilities/navbar.php');
+  include('./controllers/time.php');
 ?>
       <!-- Sidebar Navigation end-->
       <div class="page-content">
@@ -42,6 +43,7 @@
                                 // output data of each row
                                 while($departement = mysqli_fetch_assoc($result1)) {
                                     echo '<tr>';
+                                    echo 'test';
                                     echo '<td>'.$departement['depid'].'</td>';
                                     echo '<td>'.$departement['depame'].'</td>';
                                     echo '<td>'.$departement['emp_count'].'</td>';

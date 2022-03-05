@@ -8,6 +8,7 @@
    global $useradded;
    include('utilities/navbar.php');
    include('controllers/adduser.php');
+   include('./controllers/time.php');
 ?>
       <!-- Sidebar Navigation end-->
       <div class="page-content">
@@ -65,6 +66,15 @@
                         <option value="banktransfer">bank transfer</option>
                         <option value="other">Other</option>
                         </select>
+                        <select name="category" class="form-select bg-dark text1 aria-label">
+                        <option value="Divers">Divers</option>
+                        <option value="Entretiens et reparation">Entretiens et reparation</option>
+                        <option value="Impots et taxes">Impots et taxes</option>
+                        <option value="Loyer">Loyer</option>
+                        <option value="Produits d'entretien">Produits d'entretien</option>
+                        <option value="Telephonie et internet">Telephonie et internet</option>
+                        <option value="salary">salary</option>
+                        </select>
                         <div class="form-group">       
                             <input name="updatepayment" type="submit" value="updatepayment" class="btn btn-primary">
                         </div>
@@ -95,7 +105,8 @@
                         $methode = $_POST['method'];
                         $refrence = $_POST['Refrence'];
                         $user =  $_POST['user'];
-                        mysqli_query($connection, "UPDATE payroll SET payrollamount='$amount', payrolldate='$date', payrollreason='$reason', payrollrefrence='$refrence', payrollmethod='$methode', empolyeeid='$user' WHERE payrollid=$payroll_id");
+                        $category = $_POST['category'];
+                        mysqli_query($connection, "UPDATE payroll SET payrollamount='$amount', payrolldate='$date', payrollreason='$reason', payrollrefrence='$refrence', payrollmethod='$methode', empolyeeid='$user', category ='$category' WHERE payrollid=$payroll_id");
                         echo "<script>window.location.href = './payments.php';</script>";
                         
                         mysqli_close($connection);

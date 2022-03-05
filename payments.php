@@ -8,6 +8,7 @@
    global $useradded;
    include('utilities/navbar.php');
    include('controllers/addpayemnt.php');
+   include('./controllers/time.php');
    
 ?>
       <!-- Sidebar Navigation end-->
@@ -34,9 +35,10 @@
                           <th>Amount</th>
                           <th>Date</th>
                           <th>Note</th>
-                          <th>Employee</th>
+                          <th>Expense's name</th>
                           <th>Method</th>
                           <th>Refrence</th>
+                          <th>Category</th>
                           <th>Departement</th>
                           <th>Action</th>
                         </tr>
@@ -57,10 +59,12 @@
                                     <td><?=$payroll['payrollamount']?></td>
                                     <td><?=$payroll['payrolldate']?></td>
                                     <td><?=$payroll['payrollreason']?></td>
-                                    <td><?=$payroll['firstname'].' '.$payroll['lastname']?></td>
+                                    <td><?=$payroll['firstname']?></td>
                                     <td><?=$payroll['payrollmethod']?></td>
                                     <td><?=$payroll['payrollrefrence']?></td>
+                                    <td><?=$payroll['category']?></td>
                                     <td><?=$payroll['depame']?></td>
+                                    
                                   
                                     <?php
                                     echo'
@@ -148,6 +152,16 @@
                         <option value="creditcard">Credit Card</option>
                         <option value="banktransfer">bank transfer</option>
                         <option value="other">Other</option>
+                        </select>
+                        </select>
+                        <select name="category" class="form-select bg-dark text1 aria-label">
+                        <option value="Divers">Divers</option>
+                        <option value="Entretiens et reparation">Entretiens et reparation</option>
+                        <option value="Impots et taxes">Impots et taxes</option>
+                        <option value="Loyer">Loyer</option>
+                        <option value="Produits d'entretien">Produits d'entretien</option>
+                        <option value="Telephonie et internet">Telephonie et internet</option>
+                        <option value="salary">salary</option>
                         </select>
                         <div class="form-group">       
                             <button name=payment type="submit" value="payment" class="btn btn-primary">Save</button>

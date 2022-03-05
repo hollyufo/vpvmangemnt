@@ -12,7 +12,8 @@
     $username = "root";
     $password = "";
     $dbname = "management";
-    
-    $connection = mysqli_connect($hostname, $username, $password, $dbname) or die("Database connection not established.")
 
+    $connection = mysqli_connect($hostname, $username, $password, $dbname) or die("Database connection not established.");
+    
+ 
 ?>

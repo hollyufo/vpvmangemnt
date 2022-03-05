@@ -1,6 +1,7 @@
 <?php 
     
     include('config/db.php');
+    include('./controllers/time.php');
     if(!$_SESSION['login']){
       header("location: index.php");
       die;

@@ -8,6 +8,7 @@
    global $useradded;
    include('utilities/navbar.php');
    include('controllers/adduser.php');
+   include('./controllers/time.php');
 ?>
       <!-- Sidebar Navigation end-->
       <div class="page-content">
@@ -32,10 +33,7 @@
                       <thead>
                         <tr>
                           <th>#</th>
-                          <th>Last Name</th>
-                          <th>First Name</th>
-                          <th>Email</th>
-                          <th>Phone</th>
+                          <th>Name</th>
                           <th>Departement</th>
                           <th>Action</th>
                         </tr>
@@ -51,10 +49,7 @@
                                 while($employee = mysqli_fetch_assoc($result1)) {
                                     echo '<tr>';
                                     echo '<td class="mytd">'.$employee['employeeid'].'</td>';
-                                    echo '<td class="mytd">'.$employee['lastname'].'</td>';
                                     echo '<td class="mytd">'.$employee['firstname'].'</td>';
-                                    echo '<td class="mytd">'.$employee['email'].'</td>';
-                                    echo '<td class="mytd">'.$employee['phonenumber'].'</td>';
                                     echo '<td class="mytd">'.$employee['depame'].'</td>';
                                     
                                     echo '
@@ -109,20 +104,8 @@
                           <p>Enter user information.</p>
                           <form method="POST">
                               <div class="form-group">
-                                  <label>Last name</label>
-                                  <input name="lastname" type="text" placeholder="first name" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                  <label>first name</label>
-                                  <input name="firstname" type="text" placeholder="last name" class="form-control">
-                              </div>
-                              <div class="form-group">
-                                  <label>Email</label>
-                                  <input name="Email" type="email" placeholder="first name" class="form-control">
-                              </div>
-                              <div class="form-group">       
-                                  <label>Phone number</label>
-                                  <input name="phone" type="tel" placeholder="phone number" class="form-control">
+                                  <label>name</label>
+                                  <input name="firstname" type="text" placeholder="Name of Expense" class="form-control">
                               </div>
                               <select name="deb" class="form-select bg-dark text1 aria-label=">
                               <?php

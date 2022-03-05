@@ -7,6 +7,7 @@
    };
    global $useradded;
    include('utilities/navbar.php');
+   include('./controllers/time.php');
 ?>
       <!-- Sidebar Navigation end-->
       <div class="page-content">

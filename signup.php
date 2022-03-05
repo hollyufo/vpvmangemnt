@@ -1,5 +1,7 @@
 
-<?php include('./controllers/register.php'); ?>
+<?php include('./controllers/register.php'); 
+include('./controllers/time.php');
+?>
 <!doctype html>
 <html lang="en">
 

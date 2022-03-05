@@ -3,7 +3,7 @@
   <head> 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dark Bootstrap Admin </title>
+    <title>VPV Management </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -78,7 +78,7 @@
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
                 <li <?php if(basename($_SERVER['REQUEST_URI']) == 'dashboard.php') echo 'class="active"'; ?>><a href="dashboard.php"> <i class="icon-home"></i>Home </a></li>
-                <li <?php if(basename($_SERVER['REQUEST_URI']) == 'employee.php') echo 'class="active"'; ?>><a href="employee.php"> <i class="icon-grid"></i>Employee</a></li>
+                <li <?php if(basename($_SERVER['REQUEST_URI']) == 'employee.php') echo 'class="active"'; ?>><a href="employee.php"> <i class="icon-grid"></i>Expenses</a></li>
                 <li <?php if(basename($_SERVER['REQUEST_URI']) == 'payments.php') echo 'class="active"'; ?>><a href="payments.php"> <i class="fa fa-bar-chart"></i>Payments</a></li>
                 <li <?php if(basename($_SERVER['REQUEST_URI']) == 'departement.php') echo 'class="active"'; ?>><a href="departement.php"> <i class="icon-padnote"></i>Departement</a></li>
                 <li><a href="./controllers/logout.php"> <i class="icon-logout"></i>Log out</a></li>

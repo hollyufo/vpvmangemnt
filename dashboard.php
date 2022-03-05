@@ -6,6 +6,8 @@
     die;
  };
  include('utilities/navbar.php');
+  include('./controllers/time.php');
+ 
 ?>
       <!-- Sidebar Navigation end-->
       <div class="page-content">
@@ -21,7 +23,7 @@
                 <div class="statistic-block block">
                   <div class="progress-details d-flex align-items-end justify-content-between">
                     <div class="title">
-                      <div class="icon"><i class="icon-user-1"></i></div><strong>Employee</strong>
+                      <div class="icon"><i class="icon-user-1"></i></div><strong>Expenses</strong>
                     </div>
                     <?php
                       $sqlz = "SELECT COUNT(employeeid) AS emp_count FROM employee";
@@ -68,7 +70,7 @@
                 <div class="statistic-block block">
                   <div class="progress-details d-flex align-items-end justify-content-between">
                     <div class="title">
-                      <div class="icon"><i class="icon-writing-whiteboard"></i></div><strong>employee</strong>
+                      <div class="icon"><i class="icon-writing-whiteboard"></i></div><strong>users</strong>
                     </div>
                     <?php
                       $sqld = "SELECT COUNT(id) AS user_count FROM users";
@@ -95,7 +97,7 @@
                           <th>#</th>
                           <th>Amount</th>
                           <th>Date</th>
-                          <th>Employee</th>
+                          <th>Expenses</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -113,7 +115,7 @@
                                     <td><?=$payroll['payrollid']?></td>
                                     <td><?=$payroll['payrollamount']?></td>
                                     <td><?=$payroll['payrolldate']?></td>
-                                    <td><?=$payroll['firstname'].' '.$payroll['lastname']?></td>
+                                    <td><?=$payroll['firstname']?></td>
                                     <?php
                                     echo '</tr>';
                                 }
@@ -136,7 +138,7 @@
                         <tr>
                           <th>#</th>
                           <th>Name</th>
-                          <th>Employee</th>
+                          <th>Expenses</th>
                           <th>Budget</th>
                         </tr>
                       </thead>
