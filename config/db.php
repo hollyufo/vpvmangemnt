@@ -7,7 +7,10 @@
     if(!isset($_SESSION)) {
         session_start();
     }
-
+    // $hostname = "localhost";
+    // $username = "u993746928_vpv";
+    // $password = "12345AZERTY@@a";
+    // $dbname = "u993746928_vpvmanagement";
     $hostname = "localhost";
     $username = "root";
     $password = "";

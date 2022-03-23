@@ -3,7 +3,7 @@
   <head> 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>VPV management</title>
+    <title>VPV Management </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/07fb7fd7cc.js" crossorigin="anonymous"></script>   
     <!-- Custom Font Icons CSS-->
     <link rel="stylesheet" href="css/font.css">
     <!-- Google fonts - Muli-->
@@ -41,7 +42,7 @@
         </div>
         <div class="container-fluid d-flex align-items-center justify-content-between">
           <div class="navbar-header">
-            <!-- Navbar Header--><a href="home.php" class="navbar-brand">
+            <!-- Navbar Header--><a href="index.html" class="navbar-brand">
               <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Dark</strong><strong>Admin</strong></div>
               <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div></a>
             <!-- Sidebar Toggle Btn-->
@@ -50,8 +51,15 @@
           <div class="right-menu list-inline no-margin-bottom">    
             <div class="list-inline-item"><a href="#" class="search-open nav-link"><i class="icon-magnifying-glass-browser"></i></a></div>
             <div class="list-inline-item dropdown"><a id="navbarDropdownMenuLink1" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link messages-toggle"></a>
+          </div>
+            <!-- Tasks-->
+            <!-- Tasks end-->
+            <!-- Megamenu-->
 
-            <div class="list-inline-item logout"><a id="logout" href="login.php" class="nav-link">Logout <i class="icon-logout"></i></a></div>
+            <!-- Megamenu end     -->
+            <!-- Languages dropdown    -->
+            <!-- Log out               -->
+            <div class="list-inline-item logout">                   <a id="logout" href="login.html" class="nav-link">Logout <i class="icon-logout"></i></a></div>
           </div>
         </div>
       </nav>
@@ -63,15 +71,15 @@
         <div class="sidebar-header d-flex align-items-center">
           <div class="avatar"><img src="img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle"></div>
           <div class="title">
-            <h1 class="h5">Mark Stephen</h1>
+            <h1 class="h5"><?php echo ''.$_SESSION['firstname'].' '.$_SESSION['lastname'].''; ?></h1>
             <p>Manager</p>
           </div>
         </div>
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
-                <li class="active"><a href="home.php"> <i class="icon-home"></i>Home </a></li>
-                <li><a href="expence.php"> <i class="icon-grid"></i>Expence</a></li>
-                <li><a href="payments.php"> <i class="fa fa-bar-chart"></i>Payments</a></li>
-                <li><a href="departement.php"> <i class="icon-padnote"></i>Departement</a></li>
-                <li><a href="login.php"> <i class="icon-logout"></i>Log out</a></li>
+                <li <?php if(basename($_SERVER['REQUEST_URI']) == 'dashboard.php') echo 'class="active"'; ?>><a href="dashboard.php"> <i class="icon-home"></i>Home </a></li>
+                <li <?php if(basename($_SERVER['REQUEST_URI']) == 'employee.php') echo 'class="active"'; ?>><a href="employee.php"> <i class="icon-grid"></i>Expenses</a></li>
+                <li <?php if(basename($_SERVER['REQUEST_URI']) == 'payments.php') echo 'class="active"'; ?>><a href="payments.php"> <i class="fa fa-bar-chart"></i>Payments</a></li>
+                <li <?php if(basename($_SERVER['REQUEST_URI']) == 'departement.php') echo 'class="active"'; ?>><a href="departement.php"> <i class="icon-padnote"></i>Departement</a></li>
+                <li><a href="./controllers/logout.php"> <i class="icon-logout"></i>Log out</a></li>
       </nav>
