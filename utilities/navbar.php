@@ -78,7 +78,7 @@
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
                 <li <?php if(basename($_SERVER['REQUEST_URI']) == 'dashboard.php') echo 'class="active"'; ?>><a href="dashboard.php"> <i class="icon-home"></i>Home </a></li>
-                <li <?php if(basename($_SERVER['REQUEST_URI']) == 'employee.php') echo 'class="active"'; ?>><a href="employee.php"> <i class="icon-grid"></i>Expenses</a></li>
+                <li <?php if(basename($_SERVER['REQUEST_URI']) == 'employee.php' || basename($_SERVER['REQUEST_URI']) == 'editemployee.php') echo 'class="active"'; ?>><a href="employee.php"> <i class="icon-grid"></i>Expenses</a></li>
                 <li <?php if(basename($_SERVER['REQUEST_URI']) == 'payments.php') echo 'class="active"'; ?>><a href="payments.php"> <i class="fa fa-bar-chart"></i>Payments</a></li>
                 <li <?php if(basename($_SERVER['REQUEST_URI']) == 'departement.php') echo 'class="active"'; ?>><a href="departement.php"> <i class="icon-padnote"></i>Departement</a></li>
                 <li><a href="./controllers/logout.php"> <i class="icon-logout"></i>Log out</a></li>

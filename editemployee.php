@@ -20,33 +20,25 @@
             </div>
         </div>
         <?php 
-            $employee_id = $_GET['id'];
+            $expence_id = $_GET['id'];
             $update = true;
-            $sql = "SELECT * FROM employee WHERE employeeid=$employee_id";
+            $sql = "SELECT * FROM expence WHERE expenceid = '$expence_id'";
             $record = mysqli_query($connection, $sql);
             $row = mysqli_fetch_array($record, MYSQLI_ASSOC);
         ?>
         <section class="no-padding-bottom">
           <div class="container-fluid">
-          <p>updated user information.</p>
+          <p>updated expence information.</p>
                           <form method="POST">
                               <div class="form-group">
-                                  <label>first name</label>
-                                  <input name="firstname" type="text" placeholder="last name" class="form-control" value="<?php echo $row['firstname']; ?>">
+                                  <label> name</label>
+                                  <input name="ename" type="text" placeholder="expence name" class="form-control" value="<?php echo $row['fname']; ?>">
                               </div>
-                              <select name="deb" class="form-select bg-dark text1 aria-label=">
-                              <?php
-                                  $sqldep = "SELECT * FROM dep";
-                                  $result2 = mysqli_query($connection, $sqldep);
-                                  if (mysqli_num_rows($result2) > 0) {
-                                  // output data of each row
-                                  while($departement = mysqli_fetch_assoc($result2)) {
-                                  echo '<option value="'.$departement['depid'].'">'.$departement['depame'].'</option>';
-                                  }
-                                  //mysqli_close($connection);
-                                } 
-                                ?>
-                                </select>
+                              <select name="type" class="form-select bg-dark text1 aria-label=">
+                                <?php echo '<option selected value="'.$row['type'].'">'.$row['type'].'</option>'?>
+                                <option value="salary">salary</option>
+                                <option value="expence">expence</option>
+                              </select>
                               <div class="form-group">       
                                   <input type="submit" name="update" value="update" class="btn btn-primary">
                               </div>
@@ -71,10 +63,10 @@
                     if(isset($_POST['update'])){
 
 
-                        $firstname =  $_POST['firstname'];
-                        $deb = $_POST['deb'];
-                        mysqli_query($connection, "UPDATE employee SET firstname='$firstname', depid='$deb' WHERE employeeid=$employee_id");
-                        echo "<script>window.location.href = './employee.php';</script>";
+                        $firstname =  $_POST['ename'];
+                        $deb = $_POST['type'];
+                        mysqli_query($connection, "UPDATE expence SET fname='$firstname', type='$deb' WHERE expenceid=$expence_id");
+                        header('location: employee.php?updated=true');
                         
 
                     }

@@ -8,7 +8,7 @@
       die;
    }
    else{
-    $employee_id = $_GET['id'];
-    mysqli_query($connection, "DELETE FROM employee WHERE employeeid=$employee_id");
-    echo "<script>window.location.href = './employee.php';</script>";
+    $expence_id = $_GET['id'];
+    mysqli_query($connection, "DELETE FROM expence WHERE expenceid=$expence_id");
+    header('location: employee.php?deleted=1');   
    }
