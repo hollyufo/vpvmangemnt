@@ -9,5 +9,5 @@
    else{
     $payroll_id = $_GET['id'];
     mysqli_query($connection, "DELETE FROM payroll WHERE payrollid=$payroll_id");
-    echo "<script>window.location.href = './payments.php';</script>";
+    header('location: ./payments.php?deleted=true');   
    }

@@ -8,14 +8,14 @@ if(isset($_POST['payment'])){
     $methode = $_POST['method'];
     $refrence = $_POST['Refrence'];
     $user =  $_POST['user'];
-    $category = $_POST['category'];
+    $dep =  $_POST['dep1'];
         
     // adding it to the data base
     $sql = "INSERT INTO payroll VALUES (null,'$amount','$date', 
-        '$reason','$refrence','$methode','$user', '$category')";
+        '$reason','$refrence','$methode','$user', '$dep')";
         
     if(mysqli_query($connection, $sql)){
-        header('location: payments.php');   
+        header('location: payments.php?added=1');   
 
     } else{
         echo "ERROR: Hush! Sorry $sql. " 

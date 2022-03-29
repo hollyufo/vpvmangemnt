@@ -26,7 +26,7 @@
                       <div class="icon"><i class="icon-user-1"></i></div><strong>Expenses</strong>
                     </div>
                     <?php
-                      $sqlz = "SELECT COUNT(employeeid) AS emp_count FROM employee";
+                      $sqlz = "SELECT COUNT(expenceid) AS emp_count FROM expence";
                       $resultz = mysqli_query($connection, $sqlz);
                       $user = mysqli_fetch_assoc($resultz);
                     ?>
@@ -41,7 +41,7 @@
                       <div class="icon"><i class="icon-contract"></i></div><strong>departement</strong>
                     </div>
                     <?php
-                      $sqlq = "SELECT COUNT(depid) AS dep_count FROM dep";
+                      $sqlq = "SELECT COUNT(depid) AS dep_count FROM departement";
                       $resultq = mysqli_query($connection, $sqlq);
                       $dep = mysqli_fetch_assoc($resultq);
                     ?>
@@ -57,11 +57,12 @@
                       <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>total spent</strong>
                     </div>
                     <?php
-                      $sqle = "SELECT SUM(payrollamount) AS pay_count FROM payroll";
+                      $month = date('Y')."-".date("m");
+                      $sqle = "SELECT SUM(amount) AS pay_count FROM payroll WHERE date like '".$month."-%'";
                       $resulte = mysqli_query($connection, $sqle);
                       $pay = mysqli_fetch_assoc($resulte);
                     ?>
-                    <div class="number dashtext-3"><?php echo $pay['pay_count']?></div>
+                    <div class="number dashtext-3"><?php if(isset($pay['pay_count'])) { echo $pay['pay_count'];}else { echo "0";}?></div>
                   </div>
 
                 </div>
@@ -103,7 +104,7 @@
                       <tbody>
                       <?php
                                 // show data
-                                $sqlp = "SELECT * FROM employee INNER join dep on employee.depid = dep.depid INNER JOIN payroll on payroll.empolyeeid = employee.employeeid ORDER BY payrollid DESC LIMIT 10";
+                                $sqlp = "SELECT * FROM payroll INNER join departement on payroll.depid = departement.depid INNER JOIN expence on payroll.expenceid = expence.expenceid ORDER BY payrollid DESC LIMIT 10";
                                 $result1p = mysqli_query($connection, $sqlp);
                                 
                                 if (mysqli_num_rows($result1p) > 0) {
@@ -113,9 +114,9 @@
                                   
                                     <tr>
                                     <td><?=$payroll['payrollid']?></td>
-                                    <td><?=$payroll['payrollamount']?></td>
-                                    <td><?=$payroll['payrolldate']?></td>
-                                    <td><?=$payroll['firstname']?></td>
+                                    <td><?=$payroll['amount']?></td>
+                                    <td><?=$payroll['date']?></td>
+                                    <td><?=$payroll['fname']?></td>
                                     <?php
                                     echo '</tr>';
                                 }
@@ -147,7 +148,7 @@
                                 // show data for tot spent
                                 global $departement;
                                 // show data for departement name
-                                $sql = "SELECT dep.depid, dep.depame,COUNT(employee.employeeid) AS emp_count, SUM(payrollamount) as sum FROM employee INNER join dep on employee.depid = dep.depid INNER JOIN payroll on payroll.empolyeeid = employee.employeeid group by dep.depame LIMIT 10;";
+                                $sql = "SELECT *, COUNT(expence.expenceid) AS emp_count, SUM(amount) as sum FROM payroll INNER join departement on payroll.depid = departement.depid INNER JOIN expence on payroll.expenceid = expence.expenceid group by departement.depname LIMIT 10;";
                                 $result1 = mysqli_query($connection, $sql);
                                 
                                 if (mysqli_num_rows($result1) > 0) {
@@ -155,7 +156,7 @@
                                 while($departement = mysqli_fetch_assoc($result1)) {
                                     echo '<tr>';
                                     echo '<td>'.$departement['depid'].'</td>';
-                                    echo '<td>'.$departement['depame'].'</td>';
+                                    echo '<td>'.$departement['depname'].'</td>';
                                     echo '<td>'.$departement['emp_count'].'</td>';
                                     echo '<td>'.$departement['sum'].'</td>';
                                     echo '</tr>';

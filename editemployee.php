@@ -66,7 +66,7 @@
                         $firstname =  $_POST['ename'];
                         $deb = $_POST['type'];
                         mysqli_query($connection, "UPDATE expence SET fname='$firstname', type='$deb' WHERE expenceid=$expence_id");
-                        header('location: employee.php?updated=true');
+                        header('location: employee.php?updated='.$dep.'');
                         
 
                     }

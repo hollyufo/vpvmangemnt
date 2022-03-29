@@ -13,3 +13,6 @@
 .icons1{
     padding-left: 10px;
 }
+.number.dashtext-3:after {
+    content: '$';
+}

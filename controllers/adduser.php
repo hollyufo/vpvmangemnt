@@ -9,7 +9,7 @@
     $sql = "INSERT INTO expence VALUES (null,'$name','$type')";
         
     if(mysqli_query($connection, $sql)){
-        header('location: employee.php?user=added');   
+        header('location: employee.php?user='.$name.'');   
 
     } else{
         echo "ERROR: Hush! Sorry $sql. " 

@@ -19,14 +19,14 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="block margin-bottom-sm">
-                  <div class="title"><strong>User Table</strong></div>
+                  <div class="title"><strong>Departement Table</strong></div>
                   <div class="table-responsive"> 
                     <table class="table">
                       <thead>
                         <tr>
                           <th>#</th>
                           <th>Name</th>
-                          <th>Number of employee</th>
+                          <th>Number of Expences</th>
                           <th>Budget</th>
                           <th>Action</th>
                         </tr>
@@ -36,7 +36,7 @@
                                 // show data for tot spent
                                 global $departement;
                                 // show data for departement name
-                                $sql = "SELECT dep.depid, dep.depame,COUNT(employee.employeeid) AS emp_count, SUM(payrollamount) as sum FROM employee INNER join dep on employee.depid = dep.depid INNER JOIN payroll on payroll.empolyeeid = employee.employeeid group by dep.depame;";
+                                $sql = "SELECT *, COUNT(expence.expenceid) AS emp_count, SUM(amount) as sum FROM payroll INNER join departement on payroll.depid = departement.depid INNER JOIN expence on payroll.expenceid = expence.expenceid group by departement.depname;";
                                 $result1 = mysqli_query($connection, $sql);
                                 
                                 if (mysqli_num_rows($result1) > 0) {
@@ -45,7 +45,7 @@
                                     echo '<tr>';
                                     echo 'test';
                                     echo '<td>'.$departement['depid'].'</td>';
-                                    echo '<td>'.$departement['depame'].'</td>';
+                                    echo '<td>'.$departement['depname'].'</td>';
                                     echo '<td>'.$departement['emp_count'].'</td>';
                                     echo '<td>'.$departement['sum'].'</td>';
                                     echo '
