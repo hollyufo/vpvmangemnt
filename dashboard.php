@@ -14,6 +14,10 @@
         <div class="page-header">
           <div class="container-fluid">
             <h2 class="h5 no-margin-bottom">VPV Dashboard</h2>
+            <form class="d-flex" style="width: 100%; max-width: 329PX; margin-top: 20px;" action="./search.php">
+              <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+              <button style="margin-left: 10px;" class="btn btn-outline-success" type="submit">Search</button>
+            </form>
           </div>
         </div>
         <section class="no-padding-top no-padding-bottom">

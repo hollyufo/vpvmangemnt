@@ -9,6 +9,8 @@
    include('utilities/navbar.php');
    include('controllers/addpayemnt.php');
    include('./controllers/time.php');
+
+   $search = $_GET['search'];
    
 ?>
       <!-- Sidebar Navigation end-->
@@ -16,13 +18,9 @@
         <div class="page-header">
           <div class="container-fluid">
               <div class="myelements">
-                <h2 class="h5 no-margin-bottom">Dashboard</h2>
+                <h2 class="h5 no-margin-bottom">search</h2>
                 <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary mt-4">add payment</button>    
               </div>
-              <form class="d-flex" style="width: 100%; max-width: 329PX; margin-top: 20px;" action="./search.php">
-              <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
-              <button style="margin-left: 10px;" class="btn btn-outline-success" type="submit">Search</button>
-            </form>
             </div>
         </div>
         <section class="no-padding-bottom">
@@ -49,7 +47,7 @@
                       <tbody>
                       <?php
                                 // show data
-                                $sqlp = "SELECT * FROM payroll INNER join departement on payroll.depid = departement.depid INNER JOIN expence on payroll.expenceid = expence.expenceid ORDER BY payrollid DESC";
+                                $sqlp = "SELECT * FROM payroll INNER join departement on payroll.depid = departement.depid INNER JOIN expence on payroll.expenceid = expence.expenceid WHERE date LIKE '%$search%' OR note LIKE '%$search%' OR refrence LIKE '%$search%' OR method LIKE '%$search%' OR fname LIKE '%$search%' OR fname LIKE '%$search%' OR depname LIKE '%$search%' ORDER BY payrollid DESC";
                                 $result1p = mysqli_query($connection, $sqlp);
                                 
                                 if (mysqli_num_rows($result1p) > 0) {
@@ -101,7 +99,7 @@
                                 }
                                 }
                                 else {
-                                    echo '<div class="alert alert-warning" role="alert">Sorry no data available</div>';
+                                    echo '<div class="alert alert-warning" role="alert">Sorry no result for this search</div>';
                                 }
                                 if(isset($_GET['user'])){
                                       echo '<div class="alert alert-success" role="alert">Payment was added successfully</div>';
